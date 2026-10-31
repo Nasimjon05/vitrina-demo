@@ -1,0 +1,145 @@
+:root {
+  --bg: #F2F1EE; --surface: #FFFFFF; --ink: #1A1A1D; --muted: #6E6E73; --line: #E3E1DC;
+  --accent: #7A1F3D; --accent-soft: #F3E4E9; --sale: #C0262D; --ok: #2E7D4F;
+  --display: "Fraunces", Georgia, serif; --body: "Onest", "Segoe UI", system-ui, sans-serif;
+  --r: 16px; --pad: 16px;
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent }
+html, body { margin: 0; background: var(--bg); color: var(--ink); font: 400 15px/1.5 var(--body) }
+button, input, select, textarea { font: inherit; color: inherit }
+button { cursor: pointer; border: 0; background: none; padding: 0 }
+a { color: inherit; text-decoration: none }
+img { display: block; max-width: 100% }
+.app { max-width: 560px; margin: 0 auto; min-height: 100vh; padding-bottom: 96px }
+.num { font-variant-numeric: tabular-nums }
+h1, h2 { font-family: var(--display); font-weight: 600; margin: 0; letter-spacing: -0.01em }
+
+/* Header */
+.top { position: sticky; top: 0; z-index: 20; display: flex; align-items: center; gap: 10px; padding: 12px var(--pad); background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(12px) }
+.logo { font-family: var(--display); font-size: 26px; font-weight: 600; letter-spacing: -0.02em }
+.logo i { color: var(--accent); font-style: normal }
+.top .grow { flex: 1 }
+.icon-btn { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: var(--surface); border: 1px solid var(--line) }
+.icon-btn svg { width: 20px; height: 20px }
+
+/* Search */
+.search { margin: 4px var(--pad) 14px; display: flex; align-items: center; gap: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 999px; padding: 0 16px; height: 46px }
+.search svg { width: 18px; height: 18px; color: var(--muted); flex: none }
+.search input { border: 0; outline: 0; background: none; flex: 1; min-width: 0; height: 100% }
+
+/* Banner carousel */
+.banners { display: flex; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; padding: 0 var(--pad); scrollbar-width: none }
+.banners::-webkit-scrollbar { display: none }
+.banner { flex: 0 0 86%; scroll-snap-align: center; position: relative; border-radius: var(--r); overflow: hidden; aspect-ratio: 16 / 10; background: #ddd }
+.banner img { width: 100%; height: 100%; object-fit: cover }
+.banner::after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, transparent 35%, rgba(0,0,0,.62)) }
+.banner div { position: absolute; left: 18px; bottom: 16px; right: 18px; z-index: 1; color: #fff }
+.banner small { font-size: 11px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; opacity: .9 }
+.banner h2 { font-size: 26px; line-height: 1.1; margin-top: 4px; color: #fff }
+
+/* Category chips */
+.chips { display: flex; gap: 8px; overflow-x: auto; padding: 18px var(--pad) 6px; scrollbar-width: none }
+.chips::-webkit-scrollbar { display: none }
+.chip { flex: none; padding: 9px 15px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-weight: 500; font-size: 14px; white-space: nowrap }
+.chip.on { background: var(--ink); color: var(--bg); border-color: var(--ink) }
+
+/* Sections and product grid */
+.sec { padding: 22px var(--pad) 0 }
+.sec-head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 12px }
+.sec-head h2 { font-size: 22px }
+.sec-head a { font-size: 14px; color: var(--accent); font-weight: 600 }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 12px }
+.hscroll { display: grid; grid-auto-flow: column; grid-auto-columns: 44%; gap: 12px; overflow-x: auto; margin: 0 calc(-1 * var(--pad)); padding: 0 var(--pad) 4px; scrollbar-width: none }
+.hscroll::-webkit-scrollbar { display: none }
+.card { display: grid; gap: 8px; min-width: 0 }
+.card .ph { position: relative; aspect-ratio: 3 / 4; border-radius: 14px; overflow: hidden; background: #e7e5e0 }
+.card .ph img { width: 100%; height: 100%; object-fit: cover; transition: transform .4s ease }
+.card:active .ph img { transform: scale(1.03) }
+.tag { position: absolute; top: 8px; left: 8px; font-size: 11px; font-weight: 700; padding: 4px 8px; border-radius: 999px; background: var(--surface); color: var(--ink) }
+.tag.sale { background: var(--sale); color: #fff }
+.card .nm { font-size: 14px; line-height: 1.3; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical }
+.price { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap }
+.price b { font-weight: 700 }
+.price s { color: var(--muted); font-size: 13px }
+.price.sale b { color: var(--sale) }
+.dots { display: flex; gap: 4px }
+.dots i { width: 11px; height: 11px; border-radius: 50%; border: 1px solid rgba(0,0,0,.15) }
+.empty { text-align: center; color: var(--muted); padding: 48px 20px }
+
+/* Product page */
+.pp-ph { position: relative; aspect-ratio: 4 / 5; background: #e7e5e0 }
+.pp-ph img { width: 100%; height: 100%; object-fit: cover }
+.pp-ph .back { position: absolute; top: 12px; left: 12px }
+.pp { padding: 18px var(--pad) 0; display: grid; gap: 18px }
+.pp h1 { font-size: 26px; line-height: 1.15 }
+.pp .price b { font-size: 22px }
+.pp .price s { font-size: 15px }
+.opt h3 { font-size: 13px; font-weight: 600; color: var(--muted); margin: 0 0 8px; text-transform: uppercase; letter-spacing: .08em }
+.opt h3 span { color: var(--ink); text-transform: none; letter-spacing: 0 }
+.opts { display: flex; flex-wrap: wrap; gap: 8px }
+.size { min-width: 48px; height: 44px; padding: 0 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); font-weight: 600 }
+.size.on { border: 2px solid var(--ink) }
+.swatch { width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(0,0,0,.15); position: relative }
+.swatch.on { outline: 2px solid var(--ink); outline-offset: 3px }
+.desc { color: #3b3b40; line-height: 1.6 }
+.note { display: flex; gap: 10px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 12px 14px; font-size: 14px; color: var(--muted) }
+.note svg { width: 18px; height: 18px; flex: none; margin-top: 2px; color: var(--accent) }
+
+/* Bottom action bar */
+.bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 12px var(--pad) calc(12px + env(safe-area-inset-bottom, 0px)); background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(12px); border-top: 1px solid var(--line) }
+.bar > div { max-width: 528px; margin: 0 auto; display: flex; gap: 10px }
+.btn { flex: 1; height: 52px; border-radius: 14px; font-weight: 600; font-size: 16px; display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--surface); border: 1px solid var(--line) }
+.btn.primary { background: var(--accent); color: #fff; border-color: var(--accent) }
+.btn svg { width: 20px; height: 20px }
+.btn.sm { height: 42px; font-size: 14px; flex: none; padding: 0 16px }
+
+/* Info page */
+.info { padding: 8px var(--pad); display: grid; gap: 14px }
+.box { background: var(--surface); border: 1px solid var(--line); border-radius: var(--r); padding: 4px 16px }
+.row { display: flex; gap: 12px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--line) }
+.row:last-child { border-bottom: 0 }
+.row svg { width: 20px; height: 20px; color: var(--accent); flex: none }
+.row small { display: block; color: var(--muted); font-size: 12px }
+.demo-hint { font-size: 13px; color: var(--muted); text-align: center }
+
+/* Seller panel */
+.seller-head { padding: 4px var(--pad) 12px; display: grid; gap: 4px }
+.seller-head h1 { font-size: 26px }
+.meter { height: 6px; border-radius: 6px; background: var(--line); overflow: hidden; margin-top: 6px }
+.meter i { display: block; height: 100%; background: var(--accent) }
+.plist { padding: 0 var(--pad); display: grid; gap: 10px }
+.pitem { display: grid; grid-template-columns: 56px 1fr auto; gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 8px 12px 8px 8px }
+.pitem img { width: 56px; height: 70px; object-fit: cover; border-radius: 10px }
+.pitem .t { min-width: 0 }
+.pitem .t b { display: block; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis }
+.pitem .t small { color: var(--muted) }
+.pitem.off { opacity: .55 }
+.switch { position: relative; width: 46px; height: 28px; flex: none }
+.switch input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; z-index: 1 }
+.switch i { position: absolute; inset: 0; border-radius: 999px; background: var(--line); transition: background .2s }
+.switch i::after { content: ""; position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.25); transition: transform .2s }
+.switch input:checked + i { background: var(--ok) }
+.switch input:checked + i::after { transform: translateX(18px) }
+.switch input:focus-visible + i { outline: 2px solid var(--accent); outline-offset: 2px }
+
+/* Form */
+.form { padding: 0 var(--pad); display: grid; gap: 14px }
+.field { display: grid; gap: 6px }
+.field > span { font-size: 13px; font-weight: 600; color: var(--muted) }
+.field input, .field select, .field textarea { width: 100%; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); padding: 12px 14px; outline: 0 }
+.field input:focus, .field select:focus, .field textarea:focus { border-color: var(--ink) }
+.field textarea { min-height: 90px; resize: vertical }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 10px }
+.photo-pick { display: flex; gap: 12px; align-items: center }
+.photo-pick img { width: 72px; height: 90px; object-fit: cover; border-radius: 12px; background: #e7e5e0 }
+.photo-pick label { flex: 1; text-align: center; border: 1px dashed var(--muted); border-radius: 12px; padding: 14px; color: var(--muted); cursor: pointer }
+.photo-pick input { display: none }
+.pick-colors .swatch { width: 34px; height: 34px }
+.danger { color: var(--sale); font-weight: 600; text-align: center; padding: 10px }
+
+/* Toast */
+.toast { position: fixed; left: 50%; bottom: 100px; transform: translate(-50%, 20px); background: var(--ink); color: var(--bg); padding: 10px 18px; border-radius: 999px; font-size: 14px; opacity: 0; pointer-events: none; transition: .25s; z-index: 50; max-width: calc(100% - 32px) }
+.toast.show { opacity: 1; transform: translate(-50%, 0) }
+
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important } }
