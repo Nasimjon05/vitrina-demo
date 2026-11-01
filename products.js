@@ -59,3 +59,13 @@ window.PRODUCTS = [
     photo: '1584917865442-de89df76afd3', sizes: [], colors: ['Qizil', 'Qora', 'Bej'],
     desc: 'Qattiq shaklli, yelkaga osiladigan tasmasi bor. Ichida 2 bo‘lim.' }
 ];
+
+// Combos: several products sold together for one price set by the seller.
+window.COMBOS = [
+  { id: 'autumn-look', name: 'Kuzgi obraz', items: ['bomber', 'chinos', 'white-tee'], price: 890000,
+    desc: 'Kurtka, shim va futbolka: kuz uchun tayyor kiyim to‘plami. O‘lchamlarni har biriga alohida tanlang.' },
+  { id: 'daily-women', name: 'Kundalik ayollar to‘plami', items: ['grey-tee', 'wide-black', 'red-bag'], price: 799000,
+    desc: 'Futbolka, keng shim va charm sumka. Ishga ham, sayrga ham mos.' },
+  { id: 'warm-pair', name: 'Issiq juftlik', items: ['hoodie', 'sweatshirt'], price: 440000,
+    desc: 'Hudi va svitshot: sovuq kunlar uchun ikkitasini arzonroq oling.' }
+];
